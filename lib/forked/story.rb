@@ -223,6 +223,13 @@ module Forked
       navigate(idx)
     end
 
+    # includes a specified chunk in the current chunk (appends)
+    def include_chunk(id)
+      idx = find_chunk_index_from_id(id)
+      included = data.story.chunks[idx].content
+      data.current_lines += included[1..]
+    end
+
     ####################
     # NAVIGATION HISTORY
     ####################

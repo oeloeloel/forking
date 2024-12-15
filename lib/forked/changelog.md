@@ -1,3 +1,8 @@
+## Next version
+### Version 0.0.13
+Experimental feature: Chunk Headings can be indicated with 3 hashes `###` (a level 3 heading). When working in a code editor that supports markdown, level 3 headings can be collapsed, allowing the writer to focus on and navigate between level 2 headings (`##`). This may be helpful when working with the `include_chunk` command.
+
+
 ## Current version
 ### Version 0.0.12
 * Orientation Change Handling:
