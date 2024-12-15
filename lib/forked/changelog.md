@@ -1,7 +1,19 @@
 ## Next version
 ### Version 0.0.13
-Experimental feature: Chunk Headings can be indicated with 3 hashes `###` (a level 3 heading). When working in a code editor that supports markdown, level 3 headings can be collapsed, allowing the writer to focus on and navigate between level 2 headings (`##`). This may be helpful when working with the `include_chunk` command.
+Experimental feature: Include Chunk command allows writers to include other chunks in the current chunk. This is useful when the same content is repeated in more than one chunk. The included chunk is appended to the current chunk and should be included from an action block as follows:
+```
+## Parent Chunk
+:: include_chunk("#child_chunk") ::
 
+This is the content of the parent chunk.
+
+### Child Chunk
+
+This is the content of the child chunk.
+```
+Note that the heading of the child chunk is not displayed and chunk actions in the child chunk will not be executed (but other code, such as conditions/interpolation and trigger actions will).
+
+Experimental feature: Chunk Headings can be indicated with 3 hashes `###` (a level 3 heading). When working in a code editor that supports markdown, level 3 headings can be collapsed, allowing the writer to focus on and navigate between level 2 headings (`##`). This may be helpful when working with the `include_chunk` command (see above).
 
 ## Current version
 ### Version 0.0.12
