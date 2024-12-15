@@ -43,11 +43,7 @@ module Forked
         hdg = make_heading_hash
         hdg[:text] = unescape(heading, @escapable)
 
-        rul = make_rule_hash
-        rul[:weight] = 3
-
         chk[:content] << hdg
-        chk[:content] << rul
 
         story[:chunks] << chk
         true
