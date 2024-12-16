@@ -6,18 +6,12 @@ def config_defaults
     rule: default_rule,
     paragraph: default_paragraph,
     code_block: default_code_block,
-    code_block_box: default_code_block_box,
     blockquote: default_blockquote,
-    blockquote_box: default_blockquote_box,
     blockquote_image: default_blockquote_image,
     button: default_button,
-    button_box: default_button_box,
     selected_button: default_selected_button,
-    selected_button_box: default_selected_button_box,
     active_button: default_active_button,
-    active_button_box: default_active_button_box,
     disabled_button: default_disabled_button,
-    disabled_button_box: default_disabled_button_box,
     bold: default_bold_style,
     italic: default_italic_style,
     bold_italic: default_bold_italic_style,
@@ -28,7 +22,6 @@ def config_defaults
     blockquote_bold_italic: default_blockquote_bold_italic_style,
     blockquote_code: default_blockquote_code_style,
     callout: default_callout,
-    callout_box: default_callout_box,
     callout_image: default_callout_image,
     callout_bold: default_callout_bold,
     callout_italic: default_callout_italic,
@@ -132,7 +125,9 @@ def default_code_block
     size_enum: default_paragraph.size_enum,
     line_spacing: 0.85,
     r: 76, g: 51, b: 127,
-    spacing_after: 0.7 # 1.0 is line_height.
+    spacing_after: 0.9, # 1.0 is line_height.
+    background_color: { r: 192, g: 188, b: 204 },
+    **default_code_block_box
   }
 end
 
@@ -141,14 +136,18 @@ def default_code_block_box
     r: 192, g: 188, b: 204,
     padding_left: 20,
     padding_right: 20,
-    padding_top: 7,
-    padding_bottom: 12,
-    margin_bottom: 10
+    padding_top: 10,
+    padding_bottom: 10,
+    margin_left: 0,
+    margin_right: 0,
+    margin_top: 10,
+    margin_bottom: 12
   )
 end
 
 def default_blockquote
   default_paragraph.merge(
+    **default_blockquote_box,
     r: 102, g: 76, b: 51,
     size_enum: default_paragraph.size_enum,
     spacing_between: 0.6,
@@ -158,7 +157,7 @@ end
 
 def default_blockquote_box
   default_box.merge(
-    r: 204, g: 192, b: 168,
+    background_color: { r: 204, g: 192, b: 168 },
     padding_left: 20,
     padding_right: 20,
     padding_top: 10,
@@ -167,7 +166,7 @@ def default_blockquote_box
     margin_right: 0,
     margin_top: 10,
     margin_bottom: 12,
-    min_height: 0 # default_blockquote_image[:height] + 20
+    min_height: 0,
   )
 end
 
@@ -183,6 +182,7 @@ end
 
 def default_button
   default_paragraph.merge(
+    **default_button_box,
     font: 'fonts/roboto/roboto-bold.ttf',
     r: 204, g: 204, b: 204,
     spacing_after: 0.7,
@@ -196,12 +196,13 @@ def default_button_box
     padding_top: 6,
     padding_right: 15,
     padding_bottom: 6,
-    r: 51, g: 51, b: 51
+    background_color: { r: 51, g: 51, b: 51 }
   )
 end
 
 def default_selected_button
   default_button.merge(
+    **default_selected_button_box,
     r: 204, g: 204, b: 204
   )
 end
@@ -214,6 +215,7 @@ end
 
 def default_active_button
   default_button.merge(
+    **default_active_button_box,
     r: 204, g: 204, b: 204
   )
 end
@@ -226,6 +228,7 @@ end
 
 def default_disabled_button
   default_button.merge(
+    **default_disabled_button_box,
     r: 204, g: 204, b: 204
   )
 end
@@ -302,6 +305,7 @@ end
 def default_callout
   {
     **default_blockquote,
+    **default_callout_box,
     r: 255 - 204, g: 255 - 179, b: 255 - 153,
   }
 end
@@ -309,7 +313,7 @@ end
 def default_callout_box
   {
     **default_blockquote_box,
-    r: 168, g: 222, b: 244,
+    background_color: { r: 168, g: 222, b: 244 },
     padding_top: 10,
     padding_right: 10,
     padding_left: 10,

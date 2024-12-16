@@ -6,9 +6,8 @@ module Forked
     def display_blockquote(y_pos, item)
       display = data.style.display
       blockquote = data.style.blockquote
-      blockquote_box = data.style.blockquote_box
 
-      next_y_pos = y_pos - blockquote_box.padding_top
+      next_y_pos = y_pos - blockquote.padding_top
       labels = []
 
       # return y_pos
@@ -21,37 +20,36 @@ module Forked
 
       next_y_pos += blockquote.size_px * blockquote.spacing_after
 
-      next_y_pos -= blockquote_box.padding_bottom
+      next_y_pos -= blockquote.padding_bottom
       box_height = y_pos - next_y_pos
 
       rect = {
-        x: display.margin_left + blockquote_box.margin_left,
+        x: display.margin_left + blockquote.margin_left,
         y: next_y_pos.to_i,
-        w: display.w - blockquote_box.margin_left - blockquote_box.margin_right,
+        w: display.w - blockquote.margin_left - blockquote.margin_right,
         h: box_height,
         a: 25,
-        r: blockquote_box.r,
-        g: blockquote_box.g,
-        b: blockquote_box.b
+        r: blockquote.background_color.r,
+        g: blockquote.background_color.g,
+        b: blockquote.background_color.b
       }
 
       bg = Effed.rounded_panel(rect: rect)
       data.primitives << [bg, labels]
 
-      next_y_pos -= blockquote_box.margin_bottom
+      next_y_pos -= blockquote.margin_bottom
 
       next_y_pos
     end
 
     def display_blockquote_paragraph(y_pos, item)
       blockquote = data.style.blockquote
-      blockquote_box = data.style.blockquote_box
       display = data.style.display
       blockquote.size_px = args.gtk.calcstringbox('X', blockquote.size_enum, blockquote.font)[1]
       output_labels = []
 
-      left_margin = blockquote_box.margin_left + blockquote_box.padding_left
-      w = display.w - blockquote_box.margin_right - blockquote_box.padding_right
+      left_margin = blockquote.margin_left + blockquote.padding_left
+      w = display.w - blockquote.margin_right - blockquote.padding_right
 
       x_pos = left_margin
       new_y_pos = y_pos

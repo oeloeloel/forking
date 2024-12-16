@@ -6,7 +6,6 @@ module Forked
 
       display = data.style.display
       style = data.style.callout
-      box = data.style.callout_box || default_box
 
       display_box = {
         x: display.margin_left,
@@ -24,23 +23,23 @@ module Forked
       }
 
       rect = {
-        x: outer_rect.x + box.margin_left,
-        w: outer_rect.w - box.margin_left - box.margin_right,
-        h: box.margin_top + box.margin_bottom,
-        y: outer_rect.y - box.margin_top,
+        x: outer_rect.x + style.margin_left,
+        w: outer_rect.w - style.margin_left - style.margin_right,
+        h: style.margin_top + style.margin_bottom,
+        y: outer_rect.y - style.margin_top,
         anchor_y: 1
       }
 
       inner_rect = {
-        x: rect.x + box.padding_left,
-        h: rect.h - (box.padding_top + box.padding_bottom),
-        y: rect.y - box.padding_top,
-        w: rect.w - box.padding_left - box.padding_right,
+        x: rect.x + style.padding_left,
+        h: rect.h - (style.padding_top + style.padding_bottom),
+        y: rect.y - style.padding_top,
+        w: rect.w - style.padding_left - style.padding_right,
         anchor_y: 1
       }
 
-      rect.h = rect.h.greater(inner_rect.h + box.padding_top + box.padding_bottom)
-      outer_rect.h = outer_rect.h.greater(rect.h + box.margin_top + box.margin_bottom)
+      rect.h = rect.h.greater(inner_rect.h + style.padding_top + style.padding_bottom)
+      outer_rect.h = outer_rect.h.greater(rect.h + style.margin_top + style.margin_bottom)
 
       next_y_pos = inner_rect.y
       labels = []
@@ -77,8 +76,8 @@ module Forked
       return y_pos if image_box.nil? && text_rect.nil?
 
       inner_rect.h = (image_box&.h || 0).greater(text_rect&.h || 0)
-      rect.h = inner_rect.h + box.padding_top + box.padding_bottom
-      outer_rect.h = rect.h + box.margin_top + box.margin_bottom
+      rect.h = inner_rect.h + style.padding_top + style.padding_bottom
+      outer_rect.h = rect.h + style.margin_top + style.margin_bottom
       next_y_pos = outer_rect.y - outer_rect.h
       style.size_px = size_enum_to_size_px(style.size_enum)
 
@@ -87,9 +86,9 @@ module Forked
         y: rect.y - rect.h,
         w: rect.w,
         h: rect.h,
-        r: box.r,
-        g: box.g,
-        b: box.b,
+        r: style.background_color.r,
+        g: style.background_color.g,
+        b: style.background_color.b,
         anchor_y: 1
       }
 
