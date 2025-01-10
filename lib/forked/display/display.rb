@@ -1,12 +1,13 @@
-require_relative 'display_background.rb'
-require_relative 'display_blockquote.rb'
-require_relative 'display_button.rb'
-require_relative 'display_code_block.rb'
-require_relative 'display_heading.rb'
-require_relative 'display_image.rb'
-require_relative 'display_paragraph.rb'
-require_relative 'display_rule.rb'
-require_relative 'display_callout.rb'
+require_relative 'display_text'
+require_relative 'display_background'
+require_relative 'display_blockquote'
+require_relative 'display_button'
+require_relative 'display_code_block'
+require_relative 'display_heading'
+require_relative 'display_image'
+require_relative 'display_paragraph'
+require_relative 'display_rule'
+require_relative 'display_callout'
 
 $gtk.reset
 

@@ -82,7 +82,15 @@ def default_paragraph
     line_spacing: 1, # 1.0 is the height of the font.
     r: 51, g: 51, b: 51,
     spacing_between: 0.6,
-    spacing_after: 0.9
+    spacing_after: 0.9,
+    margin_left: 0,
+    margin_right: 0,
+    margin_top: 0,
+    margin_bottom: 0,
+    padding_left: 0,
+    padding_right: 0,
+    padding_top: 0,
+    padding_bottom: 0,
   }
 end
 
