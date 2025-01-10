@@ -91,7 +91,7 @@ def default_paragraph
     padding_right: 0,
     padding_top: 0,
     padding_bottom: 0,
-    text_align: :center,
+    text_align: :left,
   }
 end
 

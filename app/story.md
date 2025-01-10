@@ -214,7 +214,7 @@ Expect to see more formatting options added in future.
 
 ## Inline Text Styles
 
-Make text appear *in italics* by putting asterisks `*` aroung it:
+Make text appear *in italics* by putting asterisks `*` around it:
 
 ~~~md
 *This text is in italics.* **This text is bold.** ***This text is in bold italics.***
