@@ -78,7 +78,7 @@ module Forked
           if atom.text[-1] == "\n"
             x_pos = rect.x
 
-            center_row(row, new_x_pos - rect.x, rect)
+            center_row(row, new_x_pos - rect.x, rect) if style.text_align == :center
             output_labels << row.dup
             row.clear
 
@@ -106,7 +106,7 @@ module Forked
       end
 
       row[-1].text.rstrip!
-      center_row(row, new_x_pos - rect.x, rect)
+      center_row(row, new_x_pos - rect.x, rect) if style.text_align == :center
       output_labels += row
 
       data.primitives << output_labels
